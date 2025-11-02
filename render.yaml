@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: weather-predictor
+    env: python
+    plan: free
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: python backend/app.py
+    envVars:
+      - key: OWM_API_KEY
+        value: 39f0fc71bece19588eb49e17ea17fa0a
+      - key: FLASK_ENV
+        value: production
