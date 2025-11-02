@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>🌤️ Weather Predictor</h1>
+    <form method="POST">
+        <input type="text" name="city" placeholder="Enter city name" required>
+        <input type="submit" value="Get Weather">
+    </form>
+
+    {% if weather.error %}
+        <p class="error">{{ weather.error }}</p>
+    {% elif weather.city %}
+        <div class="weather-box">
+            <h2>{{ weather.city }}</h2>
+            <p><strong>Temperature:</strong> {{ weather.temp }} °C</p>
+            <p><strong>Predicted Temp:</strong> {{ weather.predicted_temp }} °C</p>
+            <p><strong>Description:</strong> {{ weather.desc }}</p>
+            <p><strong>Humidity:</strong> {{ weather.humidity }}%</p>
+        </div>
+    {% endif %}
+</body>
+</html>
